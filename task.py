@@ -4,7 +4,7 @@ import streamlit as st
 # record.py
 import sounddevice as sd
 import scipy.io.wavfile
-
+# requirements.txt
 
 def record_audio(filename="recorded.wav", duration=5, fs=44100):
     st.write("Recording...")
@@ -18,7 +18,7 @@ def transcribe_audio(filename="recorded.wav"):
     if not os.path.exists(filename):
         return st.write("Audio file not found.")
     try:
-        model = whisper.load_model('large')
+        model = whisper.load_model('medium')
         result = model.transcribe(filename)
         return result['text']
     except Exception as e:

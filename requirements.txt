@@ -2,3 +2,4 @@ streamlit
 whisper
 sounddevice
 scipy
+torch

@@ -6,7 +6,7 @@ import sounddevice as sd
 import scipy.io.wavfile
 # requirements.txt
 
-def record_audio(filename="recorded.wav", duration=5, fs=44100):
+def record_audio(filename="recorded.wav", duration=60, fs=44100):
     st.write("Recording...")
     recording = sd.rec(int(duration * fs), samplerate=fs, channels=1)
     sd.wait()
@@ -18,7 +18,7 @@ def transcribe_audio(filename="recorded.wav"):
     if not os.path.exists(filename):
         return st.write("Audio file not found.")
     try:
-        model = whisper.load_model('medium')
+        model = whisper.load_model('large')
         result = model.transcribe(filename)
         return result['text']
     except Exception as e:
